@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maintain Role Level Access Control</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo-mark">Logo</div>
+    </div>
+    <div class="top-bar-center">
+      <div class="top-search-control">
+        <select id="topSearch">
+          <option>Category</option>
+          <option>Case Category</option>
+          <option>Access Control Type</option>
+        </select>
+        <div class="top-search-input-wrapper">
+          <input type="search" class="top-search-input" placeholder="Search" />
+          <span class="search-icon"></span>
+        </div>
+      </div>
+    </div>
+    <div class="top-bar-right">
+      <button type="button" class="icon-button icon-notification" title="Notifications"></button>
+      <button type="button" class="icon-button icon-profile" title="Profile"></button>
+    </div>
+  </div>
+  <div class="app-shell">
+    <div class="side-nav">
+      <div class="icon">›</div>
+      <div class="icon">▦</div>
+      <div class="icon">🖥</div>
+      <div class="icon">＋</div>
+      <div class="icon active">⚙</div>
+      <div class="icon">☁</div>
+    </div>
+    <main class="content">
+      <div class="breadcrumb-inline">
+        <span>Home</span>
+        <span class="breadcrumb-sep">&gt;</span>
+        <span>Admin</span>
+        <span class="breadcrumb-sep">&gt;</span>
+        <span>Access Control</span>
+      </div>
+      <div class="panel">
+        <div class="title-row">
+          <div>
+            <h1>Maintain Role Level Access Control</h1>
+          </div>
+        </div>
+        <div class="search-section">
+          <div class="footer-hint">Search Criteria</div>
+          <form id="searchForm" class="form-grid" onsubmit="return false;">
+          <div class="field">
+            <label for="role">Role <span class="required">*</span></label>
+            <div class="input-group">
+              <input id="role" type="text" placeholder="Branch Manager" value="Branch Manager" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="accessType">Access Control Type <span class="required">*</span></label>
+            <select id="accessType">
+              <option>Field Level</option>
+              <option>Screen Level</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Case Category</label>
+            <div class="case-categories" id="caseCategoryChips">
+              <div class="chip">NRI <button type="button" data-chip="NRI">×</button></div>
+              <div class="chip">Corporate <button type="button" data-chip="Corporate">×</button></div>
+            </div>
+          </div>
+
+          <div class="field subcategory-row">
+            <label>Case Sub-category</label>
+            <div class="chips" id="subCategoryChips">
+              <div class="chip">Address Update <button type="button" data-chip="Address Update">×</button></div>
+              <div class="chip">Stop Check <button type="button" data-chip="Stop Check">×</button></div>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button type="button" class="btn-clear" id="clearBtn">Clear</button>
+            <button type="button" class="btn-search" id="searchBtn">Search</button>
+          </div>
+        </form>
+        </div>
+
+        <div class="empty-state" id="emptyState">
+          <div class="empty-state-art" aria-hidden="true">
+            <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="18" y="24" width="144" height="92" rx="12" fill="#F3F6FA" />
+              <rect x="30" y="38" width="120" height="16" rx="8" fill="#D9E4F8" />
+              <rect x="30" y="62" width="90" height="10" rx="5" fill="#E9EFF8" />
+              <rect x="30" y="78" width="110" height="10" rx="5" fill="#E9EFF8" />
+              <rect x="30" y="94" width="70" height="10" rx="5" fill="#E9EFF8" />
+              <rect x="20" y="120" width="140" height="14" rx="7" fill="#D9E4F8" />
+              <rect x="46" y="128" width="88" height="10" rx="5" fill="#CED9EE" />
+              <circle cx="121" cy="78" r="28" fill="#FFFFFF" stroke="#5B8DEF" stroke-width="6" />
+              <circle cx="118" cy="75" r="12" fill="#F4F7FC" stroke="#5B8DEF" stroke-width="3" />
+              <circle cx="118" cy="75" r="4" fill="#5B8DEF" />
+              <rect x="134" y="92" width="18" height="38" rx="9" transform="rotate(-42 134 92)" fill="#5B8DEF" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="table-panel" id="resultsPanel">
+          <div class="table-header">
+            <h2>Access Controls</h2>
+            <button type="button" class="filter-button" title="Filter"></button>
+          </div>
+          <table class="access-table">
+            <thead>
+              <tr>
+                <th>Case Category</th>
+                <th>Case Sub-category</th>
+                <th>Field Name</th>
+                <th>Access Type</th>
+                <th>Masking Preview</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
